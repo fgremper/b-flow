@@ -1,0 +1,67 @@
+* {
+	font-family: "Courier New";
+}
+
+html {
+	margin: 0;
+	padding: 0;
+	background-color: #eeeeee;
+}
+
+body {
+	margin: 0;
+	padding: 10px;
+	padding-top: 50px;
+}
+
+h1 {
+	position: fixed;
+	background-color: #ffffff;
+	color: #f442d9;
+	margin: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 10px;
+	z-index: 100;
+	border-bottom: 1px solid #444444;
+
+}
+
+.client {
+	display: inline-block;
+	margin: 5px;
+	background-color: #ffffff;
+	width: 200px;
+    padding: 5px;
+}
+
+.clientName {
+	font-weight: bold;
+	overflow: hidden;
+}
+
+
+.clientContent {
+	height: 200px;
+	bottom: 0;
+	left: 20px;
+	height: 200px;
+	font-size: 10px;
+	overflow: scroll;
+}
+
+
+.orange {
+    animation-name: orange;
+    animation-duration: 60s;
+}
+
+
+@keyframes orange {
+    0%   { background-color: #aeff75 }
+    25%   { background-color: #e6fc85 }
+    50%   { background-color: #ffca91 }
+    75%   { background-color: #ffa3d1 }
+    100% { background-color: #ffffff; }
+}

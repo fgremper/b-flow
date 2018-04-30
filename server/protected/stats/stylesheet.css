@@ -1,0 +1,51 @@
+body, html {
+	font-family: "Helvetica";
+}
+
+#filters {
+	margin-top: 20px;
+}
+
+.filter {
+	padding: 5px;
+	background-color: #eeeeee;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	float: left;
+}
+
+#stats {
+	margin-bottom: 10px;
+}
+
+.filter.active {
+	background-color: orange;
+}
+
+#clients {
+	margin-top: 20px;
+	font-family: 'Courier New';
+}
+
+#clients a {
+	color: #888888;
+}
+
+#clients a:hover {
+	color: orange;
+}
+
+.clear {
+	clear: both;
+}
+
+#tbl {
+	border-collapse: collapse;
+	margin-bottom: 10px;
+}
+
+#tbl td {
+	padding: 5px;
+	border: 1px solid #aaaaaa;
+}

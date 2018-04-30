@@ -1,0 +1,1334 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- default -->
+        <meta charset="utf-8" />
+        <meta name="author" content="MOVU">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+        <meta name="format-detection" content="telephone=no">
+
+        <!-- stylesheet -->
+        <link rel="stylesheet" href="jquery-ui.css" type="text/css" />
+        <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+        <link rel="stylesheet" href="pikaday.css" type="text/css">
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="icon" href="favicon.png" />
+
+        <!-- title -->
+        <title>Anfrage via MOVU</title>
+
+        <!-- robots -->
+        <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K7TDGGM');</script>
+        <!-- End Google Tag Manager -->
+
+        <!-- script -->
+        <script src='fastclick.js'></script>
+        <script src="moment.min.js"></script>
+        <script src='jquery-3.3.1.min.js'></script>
+        <script src='jquery-ui.js'></script>
+        <script src='url-search-params.js'></script>
+        <script src="pikaday.js"></script>
+        <script src="logic.js"></script>
+
+    </head>
+    <body>
+
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7TDGGM"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+        <div id="headerSpace"></div>
+
+        <div id="header">
+            <div class="center">
+                <div id="logo"></div>
+                <a href="tel:+41445051414" target="_blank" class="button buttonWithIcon deprecated">
+                    <i class="material-icons">phone</i> 044 505 14 14
+                </a>
+            </div>
+        </div>
+
+        <div id="progress">
+            <div class="center">
+                <div id="mainProgress">
+                    <span class="step active"><div class="stepNumber">1</div> <span class="stepLabel">Ihre jetzige Wohnsituation</span></span>
+                    <span class="step"><div class="stepNumber">2</div> <span class="stepLabel">Ihre neue Wohnsituation</span></span>
+                    <span class="step"><div class="stepNumber">3</div> <span class="stepLabel">Letzte Schritte</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="subHeader">
+            <div class="center">
+                <div class="subProgress">
+                    <table class="designTable">
+                        <tr>
+                            <td class="stepTd eServiceType"><div class="step active"></div></td>
+                            <td class="stepTd eCurrentPlaceType"><div class="step"></div></td>
+                            <td class="stepTd eCurrentPlaceFloor"><div class="step"></div></td>
+                            <td class="stepTd eCurrentPlaceSize"><div class="step"></div></td>
+                            <td class="stepTd eCurrentPlaceElevator"><div class="step"></div></td>
+                            <td class="stepTd eCurrentPlaceAccessibility"><div class="step"></div></td>
+                            <td class="stepTd eCleaningOptions"><div class="step"></div></td>
+                            <td class="stepTd eCleaningAdditional"><div class="step"></div></td>
+                            <td class="stepTd eCleaningBath"><div class="step"></div></td>
+                            <td class="stepTd eCleaningWindows"><div class="step"></div></td>
+                            <td class="stepTd eCleaningBlinds"><div class="step"></div></td>
+                            <td class="stepTd eNumPeople"><div class="step"></div></td>
+                            <td class="stepTd eInventory"><div class="step"></div></td>
+                            <td class="stepTd eBoxes"><div class="step"></div></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="subProgress">
+                    <table class="designTable">
+                        <tr>
+                            <td class="stepTd eNewPlaceType"><div class="step"></div></td>
+                            <td class="stepTd eNewPlaceFloor"><div class="step"></div></td>
+                            <td class="stepTd eNewPlaceElevator"><div class="step"></div></td>
+                            <td class="stepTd eNewPlaceAccessibility"><div class="step"></div></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="subProgress">
+                    <table class="designTable">
+                        <tr>
+                            <td class="stepTd eAdditionalServices"><div class="step"></div></td>
+                            <td class="stepTd eDates "><div class="step"></div></td>
+                            <td class="stepTd eAddress"><div class="step"></div></td>
+                            <td class="stepTd eContact"><div class="step"></div></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="center">
+
+            <div id="content">
+
+                <div class="card eServiceType" data-card-name="serviceType">
+
+                    <div class="question"><span class="questionText">Wofür möchten Sie Offerten erhalten?</span></div>
+
+                    <div class="paragraph">
+                        <table class="answers">
+                            <tr><td><div class="continue button buttonFullWidth choice">Umzug &amp; Reinigung</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">Nur Umzug</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">Nur Reinigung</div></td></tr>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="card eCurrentPlaceType" data-card-name="currentPlaceType">
+
+                    <div class="question"><span class="questionText">Wo ziehen Sie aus?</span></div>
+
+                    <div class="paragraph">
+                        <table class="answers">
+                            <tr><td><div class="continue button buttonFullWidth choice">Haus</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">Wohnung</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">WG-Zimmer</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">Büro/Lager</div></td></tr>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="card eCurrentPlaceFloor" data-card-name="currentPlaceFloor">
+
+                    <div class="question"><span class="questionText">Auf welchem Stock ist <span class="currentPlaceTypeLabel"></span>?</span></div>
+
+                    <div class="paragraph">
+                        <div class="continue button choice">UG</div>
+                        <div class="continue button choice">EG</div>
+                        <div class="continue button choice">HP</div>
+                        <div class="continue button choice">1.</div>
+                        <div class="continue button choice">2.</div>
+                        <div class="continue button choice">3.</div>
+                        <div class="continue button choice">4.</div>
+                        <div class="continue button choice">5.</div>
+                        <div class="continue button choice">6.</div>
+                        <div class="continue button choice">7.</div>
+                        <div class="continue button choice">8+.</div>
+                    </div>
+
+                </div>
+
+                <div class="card eCurrentPlaceSize" data-card-name="currentPlaceSize">
+
+                    <div class="question"><span class="questionText">Wie gross ist <span class="currentPlaceTypeLabel"></span>?</span></div>
+
+                    <div class="paragraph">
+                        <div class="numberDialLabel">Zimmer</div><div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="text" data-steps="0.5" min="1" max="100" value="2.5" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div><br/>
+                        <div class="numberDialLabel">Wohnfläche in m&sup2;</div><div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="text" data-steps="5" min="5" max="300" value="50" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                    </div>
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Weiter
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eCurrentPlaceElevator" data-card-name="currentPlaceElevator">
+
+                    <div class="question"><span class="questionText">Ist ein Lift vorhanden?</span></div>
+
+                    <div class="paragraph">
+                        <table class="answers">
+                            <tr><td><div class="continue button buttonFullWidth choice">Nein</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">Ja &ndash; kleiner Lift</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">Ja &ndash; grosser Lift</div></td></tr>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="card eCurrentPlaceAccessibility" data-card-name="currentPlaceAccessibility">
+
+                    <div class="question"><span class="questionText">Der Weg von Parkplatz zu Gebäudeeingang...</span></div>
+
+                    <div class="paragraph">
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">... ist länger als 20 Meter</span>
+                            </div>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Distanz in Meter ca.</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="5" min="25" max="1000" value="25" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                            </div></div>
+                        </div>
+
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">... hat Stufen</span>
+                            </div>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Anzahl Stufen ca.</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="5" min="5" max="300" value="5" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                            </div></div>
+                        </div>
+
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">... ist anderweitig erschwert</span>
+                            </div><br/>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <textarea placeholder="Bitte beschreiben Sie Ihre Situation..." class="toggleValidate"></textarea>
+                            </div></div>
+                        </div>
+                    </div>
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Weiter
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eCleaningOptions" data-card-name="cleaningOptions">
+
+                    <div class="question"><span class="questionText">Was soll gereinigt werden?</div>
+
+                    <div class="paragraph">
+                        <div class="checkGroup">
+                            <div class="buttonCheck isChecked" id="cleaningBool">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Alle Zimmer / Küche / Bad &amp; WC</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Keller / Kellerabteil</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Dachboden</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Garage</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Balkon / Terasse</span>
+                            </div><br/>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Fläche in m&sup2;</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="5" min="5" max="300" value="5" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div><br />
+                                <div class="buttonCheck">
+                                    <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                    <span class="label">Hochdruckreinigung</span>
+                                </div>
+                                <div class="paragraph">
+                                    <div class="info infoInPlace">
+                                        Je nach Verwaltung kann eine Hochdruckreinigung verlangt werden.
+                                    </div>
+                                </div>
+                            </div></div>
+                        </div>
+
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Wintergarten</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Weiter
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eCleaningBath" data-card-name="cleaningBath">
+
+                    <div class="question"><span class="questionText">Reinigung: Bad &amp; WC</span></div>
+
+                    <div class="paragraph">
+                        <div class="numberDialLabel">Duschen/Badewannen</div><div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="text" data-steps="1" min="0" max="100" value="0" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div><br/>
+                        <div class="numberDialLabel">WCs</div><div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="text" data-steps="1" min="0" max="100" value="0" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div><br/>
+                        <div class="numberDialLabel">Lavabos</div><div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="text" data-steps="1" min="0" max="100" value="0" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div><br/>
+                    </div>
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Weiter
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eCleaningWindows" data-card-name="cleaningWindows">
+
+                    <div class="question"><span class="questionText">Reinigung: Fenster</span></div>
+
+                    <div class="paragraph">
+                        <div class="numberDialLabel">Normale Fenster</div><div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="text" data-steps="1" min="0" max="100" value="0" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div><br/>
+                        <div class="numberDialLabel">Fensterwände</div><div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="text" data-steps="1" min="0" max="100" value="0" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div><br/>
+                        <div class="numberDialLabel">Fenstertüren</div><div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="text" data-steps="1" min="0" max="100" value="0" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div><br/>
+                    </div>
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Weiter
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eCleaningBlinds" data-card-name="cleaningBlinds">
+
+                    <div class="question"><span class="questionText">Reinigung: Art der Fensterstoren</span></div>
+
+                    <div class="paragraph">
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Lamellenstoren (1)</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Fensterläden (2)</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Rolläden (3)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paragraph">
+                        <img src="img/image_slats_shutters_rollerblinds.png" id="cleaningBlindsImage" />
+                    </div>
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Weiter
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eCleaningAdditional" data-card-name="cleaningAdditional">
+
+                    <div class="question"><span class="questionText">Reinigung: Zusätzliches</span></div>
+
+                    <div class="paragraph">
+
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Einbauschränke</span>
+                            </div><br/>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Anzahl</div><div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="text" data-steps="1" min="1" max="100" value="1" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+
+                            </div></div>
+                        </div>
+
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Cheminée</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Waschturm</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Spannteppich</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Weiter
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eNumPeople" data-card-name="numPeople">
+
+                    <div class="question"><span class="questionText">Wieviele Personen ziehen um?</span></div>
+
+                    <div class="paragraph">
+                        <div class="answers">
+                            <div class="continue button choice">1</div>
+                            <div class="continue button choice">2</div>
+                            <div class="continue button choice">3</div>
+                            <div class="continue button choice">4</div>
+                            <div class="continue button choice">5</div>
+                            <div class="continue button choice">6</div>
+                            <div class="continue button choice">mehr</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eInventory" data-card-name="inventory">
+
+                    <div class="question"><span class="questionText">Welche Möbel &amp; Gegenstände zügeln Sie?</span></div>
+
+                    <div class="info">
+                        <div class="paragraph">
+                            Geben Sie Ihre Möbel &amp; grossen Gegenstände an, welche nicht in Umzugskartons passen.
+                        </div>
+                        <div class="paragraph">
+                            Gehen Sie dabei nach Zimmern vor.
+                        </div>
+                    </div>
+
+                    <div id="rooms"></div>
+
+                    <div class="addRoom button buttonWithIcon">
+                        <i class="material-icons">add_circle</i> Zimmer
+                    </div>
+
+                    <div class="completeInventory">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Inventar ist vollständig
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eBoxes" data-card-name="boxes">
+
+                    <div class="question"><span class="questionText">Wieviele Umzugskartons zügeln Sie?</span></div>
+
+                    <div class="info">
+                        <div class="paragraph">
+                            Wir schätzen im Durchschnitt 30 Kartons oder Taschen pro Person.
+                        </div>
+                    </div>
+
+                    <div class="paragraph">
+                        <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="5" min="0" max="1000" value="10" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Weiter
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eNewPlaceType" data-card-name="newPlaceType">
+
+                    <div class="question"><span class="questionText">Wo ziehen Sie ein?</span></div>
+
+                    <div class="paragraph">
+                        <table class="answers">
+                            <tr><td><div class="continue button buttonFullWidth choice">Haus</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">Wohnung</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">WG-Zimmer</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">Büro/Lager</div></td></tr>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="card eNewPlaceFloor" data-card-name="newPlaceFloor">
+
+                    <div class="question"><span class="questionText">Auf welchem Stock ist <span class="newPlaceTypeLabel"></span>?</span></div>
+
+                    <div class="paragraph">
+                        <div class="continue button choice">UG</div>
+                        <div class="continue button choice">EG</div>
+                        <div class="continue button choice">HP</div>
+                        <div class="continue button choice">1.</div>
+                        <div class="continue button choice">2.</div>
+                        <div class="continue button choice">3.</div>
+                        <div class="continue button choice">4.</div>
+                        <div class="continue button choice">5.</div>
+                        <div class="continue button choice">6.</div>
+                        <div class="continue button choice">7.</div>
+                        <div class="continue button choice">8+.</div>
+                    </div>
+
+                </div>
+
+                <div class="card eNewPlaceElevator" data-card-name="newPlaceElevator">
+
+                    <div class="question"><span class="questionText">Ist ein Lift vorhanden?</span></div>
+
+                    <div class="paragraph">
+                        <table class="answers">
+                            <tr><td><div class="continue button buttonFullWidth choice">Nein</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">Ja &ndash; kleiner Lift</div></td></tr>
+                            <tr><td><div class="continue button buttonFullWidth choice">Ja &ndash; grosser Lift</div></td></tr>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="card eNewPlaceAccessibility" data-card-name="newPlaceAccessibility">
+
+                    <div class="question"><span class="questionText">Der Weg von Parkplatz zu Gebäudeeingang...</span></div>
+
+                    <div class="paragraph">
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">... ist länger als 20 Meter</span>
+                            </div>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Distanz in Meter ca.</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="5" min="25" max="1000" value="25" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                            </div></div>
+                        </div>
+
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">... hat Stufen</span>
+                            </div>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Anzahl Stufen ca.</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="5" min="5" max="300" value="5" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                            </div></div>
+                        </div>
+
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">... ist anderweitig erschwert</span>
+                            </div><br/>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <textarea placeholder="Bitte beschreiben Sie Ihre Situation..." class="toggleValidate"></textarea>
+                            </div></div>
+                        </div>
+                    </div>
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Weiter
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eAdditionalServices" data-card-name="additionalServices">
+
+                    <div class="question"><span class="questionText">Zusätzliche Services</span></div>
+
+                    <h1>Handwerk</h1>
+
+                    <div class="paragraph">
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Möbel abbauen und aufbauen</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Möbellift notwendig</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Kisten einpacken</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Kisten auspacken</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Dübellöcher füllen</span>
+                            </div><br/>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Anzahl</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="1" min="1" max="1000" value="1" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                            </div></div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Lampen abmontieren</span>
+                            </div><br/>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Anzahl</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="1" min="1" max="1000" value="1" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                            </div></div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Lampen montieren</span>
+                            </div><br/>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Anzahl</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="1" min="1" max="1000" value="1" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                            </div></div>
+                        </div>
+                    </div>
+
+                    <h1 class="headerSpacing">Material</h1>
+
+                    <div class="paragraph">
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Umzugskisten mieten (inkl. Lieferung und Abholung)</span>
+                            </div><br/>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Anzahl</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="10" min="10" max="1000" value="10" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                            </div></div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Kleiderboxen mieten (inkl. Lieferung und Abholung)</span>
+                            </div><br/>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Anzahl</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="1" min="1" max="1000" value="1" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                            </div></div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck groupExpand">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Floorliner / Bodenschutz bestellen</span>
+                            </div><br/>
+                            <div class="checkGroupExpander"><div class="checkGroupExpanderBox">
+                                
+                                <div class="numberDialLabel">Länge in Meter</div>
+                                <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="10" min="10" max="1000" value="10" class="numberDialField" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                            </div></div>
+                        </div>
+                    </div>
+
+                    <!--
+                    <h1 class="headerSpacing">Elektronik</h1>
+
+                    <div class="paragraph">
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Telefon einrichten</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">Internet aufschalten/einrichten</span>
+                            </div>
+                        </div>
+                        <div class="checkGroup">
+                            <div class="buttonCheck">
+                                <i class="material-icons unchecked">check_box_outline_blank</i><i class="material-icons checked">check_box</i>
+                                <span class="label">TV einrichten</span>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">check</i> Weiter
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card eDates" data-card-name="dates">
+
+                    <div class="question"><span class="questionText">Gewünschtes Datum oder Zeitraum</div>
+
+                    <div class="dateWrapperMoving">
+
+                        <h1>Umzug</h1>
+
+                        <div class="paragraph">
+                            <div class="radioGroup">
+
+                                <div class="buttonRadio isChecked dateRadioWidth">
+                                    <i class="material-icons unchecked">radio_button_unchecked</i><i class="material-icons checked">radio_button_checked</i>
+                                    <span class="label">am</span>
+                                </div>
+
+                                <div class="followingRadio">
+
+                                    <div id="dateMovingAt" class="validate dateInput">Datum</div>
+
+                                </div>
+
+                                <div class="buttonRadio dateRadioWidth">
+                                    <i class="material-icons unchecked">radio_button_unchecked</i><i class="material-icons checked">radio_button_checked</i>
+                                    <span class="label">zwischen</span>
+                                </div>
+
+                                <div class="followingRadio">
+
+                                    <div id="dateMovingFrom" class="validate dateInput disabled">Datum</div>
+                                    <div class="dateUnd">und</div>
+                                    <div id="dateMovingTo" class="validate dateInput disabled">Datum</div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="dateWrapperCleaning">
+
+                        <h1 class="headerSpacing">Reinigung</h1>
+
+                        <div class="paragraph">
+                            <div class="radioGroup">
+
+                                <div class="buttonRadio isChecked dateRadioWidth">
+                                    <i class="material-icons unchecked">radio_button_unchecked</i><i class="material-icons checked">radio_button_checked</i>
+                                    <span class="label">am</span>
+                                </div>
+
+                                <div class="followingRadio">
+
+                                    <div id="dateCleaningAt" class="validate dateInput">Datum</div>
+
+                                </div>
+
+                                <div class="buttonRadio dateRadioWidth">
+                                    <i class="material-icons unchecked">radio_button_unchecked</i><i class="material-icons checked">radio_button_checked</i>
+                                    <span class="label">zwischen</span>
+                                </div>
+
+                                <div class="followingRadio">
+
+                                    <div id="dateCleaningFrom" class="validate dateInput disabled">Datum</div>
+                                    <div class="dateUnd">und</div>
+                                    <div id="dateCleaningTo" class="validate dateInput disabled">Datum</div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">done</i> Weiter
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card eAddress" data-card-name="address">
+
+                    <div class="question"><span class="questionText">Adressen</div>
+
+                    <h1>Auszugsadresse</h1>
+
+                    <div class="paragraph">
+                        <div class="columns">
+                            <div class="columnsHalf">
+                                <input type="text" placeholder="Strasse &amp; Nr." class="validate" />
+                            </div>
+                            <div class="columnsHalf">
+                                <div class="columns">
+                                    <div class="columnsZip">
+                                        <input type="number" id="fieldCurrentZip" placeholder="PLZ" class="validate" />
+                                    </div>
+                                    <div class="columnsCity">
+                                        <input type="text" id="fieldCurrentCity" placeholder="Ort" class="validate" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="addressToBlock">
+
+                        <h1 class="headerSpacing">Einzugsadresse</h1>
+
+                        <div class="paragraph">
+                            <div class="columns">
+                                <div class="columnsHalf">
+                                    <input type="text" placeholder="Strasse &amp; Nr." class="validate" />
+                                </div>
+                                <div class="columnsHalf">
+
+
+                                    <div class="columns">
+                                        <div class="columnsZip">
+                                            <input type="number" id="fieldNewZip" placeholder="PLZ" class="validate" />
+                                        </div>
+                                        <div class="columnsCity">
+                                            <input type="text" id="fieldNewCity" placeholder="Ort" class="validate" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">done</i> Weiter
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card eContact" data-card-name="contact">
+
+                    <div class="question"><span class="questionText">Kontakt</div>
+
+                    <h1>Kontakt</h1>
+
+                    <div class="paragraph">
+                        <div class="columns">
+                            <div class="columnsHalf">
+                                <input type="text" placeholder="Vorname" class="validate" />
+                            </div>
+                            <div class="columnsHalf">
+                                <input type="text" placeholder="Nachname" class="validate" />
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="columnsHalf">
+                                <input type="email" placeholder="E-Mail Adresse" class="validate" />
+                            </div>
+                            <div class="columnsHalf">
+                                <input type="text" placeholder="Mobiltelefon" class="validate phone" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1 class="headerSpacing">Kommentar</h1>
+
+                    <div class="paragraph">
+                        <textarea placeholder="Möchten Sie uns etwas zusätzliches mitteilen? (optional)"></textarea>
+                    </div>
+
+                    <div class="paragraph">
+                        
+                        <div class="info infoInPlace headerSpacing">
+                            <div class="paragraph">
+                                Wir werden Sie mithilfe der Kontaktangaben über Ihre Offerten benachrichtigen. Dank Ihrer Mobiltelefonnummer können wir Sie bei Rückfragen erreichen.
+                            </div>
+                            <div class="paragraph">
+                                <a href="https://www.movu.ch/de/privacy/" target="_blank">Datenschutzbedingungen</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="paragraph headerSpacing">
+                        <div class="continue button buttonWithIcon">
+                            <i class="material-icons">done_all</i> Offerten erhalten
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card eComplete" data-card-name="complete">
+
+                    <div class="question"><span class="questionText">Geschafft!</div>
+
+                    <div class="paragraph">                        
+                        <div class="info infoInPlace">
+                            <div id="completedInquirySending">
+                                <div class="paragraph">
+                                    Sende Anfrage... Einen Moment! ...
+                                </div>
+                            </div>
+                            <div id="completedInquiryError">
+                                <div class="paragraph">
+                                    Ups! Ihre Anfrage konnte nicht gesendet werden.
+                                </div>
+                                <div class="paragraph">
+                                    <div id="resendCompletedInquiry" class="button buttonWithIcon">
+                                        <i class="material-icons">replay</i> Nochmal versuchen!
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="completedInquirySuccess">
+                                <div class="paragraph">
+                                    Vielen Dank! Wir informieren Sie, sobald Offerten eingetroffen sind!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footerSpace"></div>
+
+        <div class="footer">
+            <div class="center">
+                <div class="back button buttonWithIcon deprecated hidden">
+                    <i class="material-icons">keyboard_backspace</i> Zurück
+                </div>
+                <div class="moreInfo button buttonWithIcon deprecated">
+                    <i class="material-icons">info</i> Unsicher bei Ihrer Antwort?
+                </div>
+                <div class="fakeButton">
+                    
+                </div>
+                <div class="copyright">
+                    <span class="copyrightFull">Copyright </span>© 2018 MOVU AG<span class="copyrightFull">, Alle Rechte vorbehalten.</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay">
+
+            <div class="overlayTable">
+                <div class="overlayTableChild">
+                    <div class="center">
+                        <div id="overlayContent">
+
+                            <div class="overlayWindow">
+
+                                <div class="overlaySelect">
+
+                                    <div id="overlaySearchWrapper">
+                                        <input id="overlaySearch" placeholder="Suchen..." type="text" />
+                                    </div>
+                                    <div class="overlayClose"><i class="material-icons">clear</i></div>
+
+                                    <div id="overlayGridWrapper">
+                                        <table id="overlayGrid">
+                                            <tr>
+                                                <td><img class="overlayGridIcon" /><span class="overlayGridLabel" /></td>
+                                                <td><img class="overlayGridIcon" /><span class="overlayGridLabel" /></td>
+                                                <td><img class="overlayGridIcon" /><span class="overlayGridLabel" /></td>
+                                            </td>
+                                            <tr>
+                                                <td><img class="overlayGridIcon" /><span class="overlayGridLabel" /></td>
+                                                <td><img class="overlayGridIcon" /><span class="overlayGridLabel" /></td>
+                                                <td><img class="overlayGridIcon" /><span class="overlayGridLabel" /></td>
+                                            </td>
+                                            <tr>
+                                                <td><img class="overlayGridIcon" /><span class="overlayGridLabel" /></td>
+                                                <td><img class="overlayGridIcon" /><span class="overlayGridLabel" /></td>
+                                                <td><img class="overlayGridIcon" /><span class="overlayGridLabel" /></td>
+                                            </td>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                                <div class="overlayOptions">
+
+                                    <div class="overlayClose"><i class="material-icons">clear</i></div>
+
+                                    <div class="overlayItemShowcase">
+
+                                        <div id="overlayActiveItem"></div>
+
+                                        <div class="numberDialWrapper"><div class="numberDialMinus button buttonIconOnly buttonStraightRight"><i class="material-icons">remove</i></div><input type="number" data-steps="1" min="1" max="99" value="1" class="numberDialField" id="overlayQuantityNumber" /><div class="numberDialPlus button buttonIconOnly buttonStraightLeft"><i class="material-icons">add</i></div></div>
+                                        <div id="overlayInsert" class="button buttonWithIcon">
+                                            <i class="material-icons">done</i> Hinzufügen
+                                        </div>
+                                        <div id="overlayUpdate" class="button buttonWithIcon">
+                                            <i class="material-icons">done</i> Bestätigen
+                                        </div>
+                                        <div id="overlayDelete" class="button buttonWithIcon">
+                                            <i class="material-icons">clear</i> Entfernen
+                                        </div>
+
+                                    </div>
+
+                                    <div id="overlayProperties"></div>
+
+                                    <div class="clear"></div>
+
+                                    <div class="overlayPropertyGroupWide">
+                                        <input type="text" id="itemSpecialProperties" placeholder="Besondere Eigenheiten (optional)"></input>
+                                    </div>
+
+                                </div>
+
+                                <div class="overlayInfo">
+
+                                    <div class="overlayClose"><i class="material-icons">clear</i></div>
+
+                                    <h1>Weitere Infos</h1>
+
+                                    <div class="infoCard i-serviceType">
+                                        <div class="paragraph">
+                                            Suchen Sie eine andere Dienstleistung bezüglich Ihres Umzuges oder Ihrer Reinigung?
+                                        </div>
+                                        <div class="paragraph">
+                                            Melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="infoCard i-currentPlaceType">
+                                        <div class="paragraph">
+                                            Haben Sie einen Spezialfall oder trifft keine der hier erwähnten Wohnsituationen auf Sie zu?
+                                        </div>
+                                        <div class="paragraph">
+                                            Melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+
+                                    </div>
+
+                                    <div class="infoCard i-currentPlaceFloor">
+                                        <div class="paragraph">
+                                            UG = Untergeschoss<br/>
+                                            EG = Erdgeschoss<br/>
+                                            HP = Hochparterre
+                                        </div>
+                                        <div class="paragraph">
+                                            Alles was ebenerdig ist, zählt als Erdgeschoss. Die Stockwerke darüber beginnen ab Eins.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-currentPlaceSize">
+                                        <div class="paragraph">
+                                            Kleinere Abweichungen sind kein Problem. Wenn sie unsicher sind, schauen Sie doch in Ihren Mietvertrag.
+
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-currentPlaceElevator">
+                                        <div class="paragraph">
+                                            Kleiner Lift = bis zu 4 Personen<br/>
+                                            Grosser Lift = ab 5 Personen
+
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-currentPlaceAccessibility">
+                                        <div class="paragraph">
+                                            Es geht um den Weg von der nächsten Parkmöglichkeit für den Umzugswagen bis zum Gebäudeeingang.
+                                        </div>
+                                        <div class="paragraph">
+                                            Kleinere Abweichungen bei Distanz oder Stufenanzahl sind kein Problem.
+                                        </div>
+                                        <div class="paragraph">
+                                            Die Distanz hilft uns, den Transportaufwand besser abzuschätzen. Falls keine Aussenstufen vorhanden sind, können die Umzugshelfer einen Trolley zum Transportieren benutzen.
+                                        </div>
+                                        <div class="paragraph">
+                                            Anderweitig erschwerte Zustände, z.B. Parkplatz mieten, an einer Schnellstrasse wohnen, schwierige Zufahrt usw. bitte vermerken.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-cleaningOptions">
+                                        <div class="paragraph">
+                                            Wir bieten eine Abnahmegarantie auf alle Räume, die von uns geputzt werden.
+                                        </div>
+                                        <div class="paragraph">
+                                            Wenn Sie Dienstleistungen wünschen, die hier nicht aufgeführt sind, bitte im Kommentarfeld ganz am Schluss erwähnen.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-cleaningAdditional">
+                                        <div class="paragraph">
+                                            Einbauschränke sind fester Bestandteil der Wohnung/des Hauses und werden beim Umzug nicht mitgenommen.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-cleaningBath">
+                                        <div class="paragraph">
+                                            Sollten im Bad Materialien wie z.B. Marmor oder Naturstein verarbeitet sein oder gibt es andere fest installierte Badzimmerelemente, bitte im Kommentarfeld ganz am Schluss erwähnen.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-cleaningWindows">
+                                        <div class="paragraph">
+                                            Als Fenster gilt eine mit Glasscheibe versehene Öffnung in einer Mauer. Deshalb zählen für die Begrenzung eines Fensters nicht die einzelnen Fensterrahmen, sondern die Mauer.
+                                        </div>
+                                        <div class="paragraph">
+                                            Eine Fensterwand ist eine Wand mit Fenstern, die vom Boden bis (fast) zur Decke verläuft, z.B. im Wintergarten.
+                                        </div>
+                                        <div class="paragraph">
+                                            Eine Fenstertür ist z.B. der Zugang zur Terasse oder Balkon. Fenstertüren in einer Fensterwand zählen zur Fensterwand und müssen nicht als Fenstertür angegeben werden.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-cleaningBlinds">
+                                        <div class="paragraph">
+                                            Wählen Sie diejenigen Storen aus, die auf Ihre jeztige Wohnsituation zutreffen.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-numPeople">
+                                        <div class="paragraph">
+                                            Diese Frage hilft der Firma, sich ein Bild vom Umfang des Umzugsguts zu machen.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-inventory">
+                                        <div class="paragraph">
+                                            Geben Sie Ihre Möbel &amp; grossen Gegenstände an, welche nicht in Umzugskartons passen. Gehen Sie dabei nach Zimmern vor.
+                                        </div>
+                                        <div class="paragraph">
+                                            Haben Sie Fragen zu bestimmten Inventarstücken oder ist Ihnen etwas unklar? Melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-boxes">
+                                        <div class="paragraph">
+                                            Diese Frage hilft der Firma, sich ein Bild vom Umfang des Umzugsguts zu machen.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+
+                                    <div class="infoCard i-newPlaceType">
+                                        <div class="paragraph">
+                                            Haben Sie einen Spezialfall oder trifft keine der hier erwähnten Wohnsituationen auf Sie zu?
+                                        </div>
+                                        <div class="paragraph">
+                                            Melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+
+                                    </div>
+
+                                    <div class="infoCard i-newPlaceFloor">
+                                        <div class="paragraph">
+                                            UG = Untergeschoss<br/>
+                                            EG = Erdgeschoss<br/>
+                                            HP = Hochparterre
+                                        </div>
+                                        <div class="paragraph">
+                                            Alles was ebenerdig ist, zählt als Erdgeschoss. Die Stockwerke darüber beginnen ab Eins.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-newPlaceElevator">
+                                        <div class="paragraph">
+                                            Kleiner Lift = bis zu 4 Personen<br/>
+                                            Grosser Lift = ab 5 Personen
+
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-newPlaceAccessibility">
+                                        <div class="paragraph">
+                                            Es geht um den Weg von der nächsten Parkmöglichkeit für den Umzugswagen bis zum Gebäudeeingang.
+                                        </div>
+                                        <div class="paragraph">
+                                            Kleinere Abweichungen bei Distanz oder Stufenanzahl sind kein Problem.
+                                        </div>
+                                        <div class="paragraph">
+                                            Die Distanz hilft uns, den Transportaufwand besser abzuschätzen. Falls keine Aussenstufen vorhanden sind, können die Umzugshelfer einen Trolley zum Transportieren benutzen.
+                                        </div>
+                                        <div class="paragraph">
+                                            Anderweitig erschwerte Zustände, z.B. Parkplatz mieten, an einer Schnellstrasse wohnen, schwierige Zufahrt usw. bitte vermerken.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-additionalServices">
+                                        <div class="paragraph">
+                                            Nach erhalt der Offerten können Sie die ausgewählten Services immer noch abwählen. Dazuwählen ist jedoch nur mit telefonischer Absprache möglich.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-dates">
+                                        <div class="paragraph">
+                                            Wenn Sie Ihr Umzugs-/Reinigungsdatum bereits kennen, geben Sie es bitte an. Ansonsten wählen Sie den ungefähren Zeitraum aus.
+                                        </div>
+                                        <div class="paragraph">
+                                            Datumsänderungen können nach Erhalt der Offerten telefonisch vorgenommen werden.
+                                        </div>
+                                        <div class="dateWrapperCleaning">
+                                            <div class="paragraph">
+                                                Bei der Reinigung geben Sie im Idealfall den Zeitraum zwischen Auszug und Abnahme an, um sicherzustellen, dass möglichst viele Firmen für Sie offerieren können.
+                                            </div>
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-address">
+                                        <div class="paragraph">
+                                            Ihre Daten erhalten die Firmen erst, wenn es zu einer Buchung kommt. Bis dahin werden Ihren personenbezogenen Informationen geschützt.
+                                        </div>
+                                        <div class="paragraph">
+                                            <a href="https://www.movu.ch/de/privacy/" target="_blank">Datenschutzbedingungen</a>
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="infoCard i-contact">
+                                        <div class="paragraph">
+                                            Ihre Daten erhalten die Firmen erst, wenn es zu einer Buchung kommt. Bis dahin werden Ihren personenbezogenen Informationen geschützt.
+                                        </div>
+                                        <div class="paragraph">
+                                            Bitte geben Sie Ihr Mobiltelefonnummer an, beginnend mit 076/077/078/089.
+                                        </div>
+                                        <div class="paragraph">
+                                            <a href="https://www.movu.ch/de/privacy/" target="_blank">Datenschutzbedingungen</a>
+                                        </div>
+                                        <div class="paragraph">
+                                            Bei weiteren Fragen melden Sie sich doch bitte bei uns, wir helfen Ihnen gerne weiter!
+                                        </div>
+                                    </div>
+
+                                    <div class="paragraph">
+                                        <a href="tel:+41445051414" target="_blank" class="button buttonWithIcon">
+                                            <i class="material-icons">phone</i> 044 505 14 14
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </body>
+</html>
